@@ -4,7 +4,7 @@
   "description": "mary-poppins plugin for running a local command",
   "main": "plugin.js",
   "scripts": {
-    "test": "mocha tests"
+    "test": "./node_modules/.bin/jasmine-node test"
   },
   "repository": {
     "type": "git",
