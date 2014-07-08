@@ -24,7 +24,7 @@ module.exports = function (poppins) {
               format.apply(null, [command.exec].concat(match.slice(1)));
 
           exec(commandString, function (err, stdout, stderr) {
-            console.log(stdout, stderr);
+            poppins.emit('log', [stdout, stderr].join('\n'));
           });
         }
       });
