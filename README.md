@@ -1,4 +1,4 @@
-# poppins-exec
+# poppins-exec [![Build Status](https://travis-ci.org/btford/poppins-exec.svg?branch=master)](https://travis-ci.org/btford/poppins-exec)
 
 A [Mary Poppins](https://github.com/btford/mary-poppins) plugin for running local commands in
 response to GitHub comments.
