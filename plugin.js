@@ -13,10 +13,10 @@ module.exports = function (poppins) {
   };
 
 
-  function execCommands (issue) {
-    if (plugins.exec.owners.indexOf(issue.comment.user.name) > -1) {
+  function execCommands (data) {
+    if (plugins.exec.owners.indexOf(data.comment.user.login) > -1) {
       plugins.exec.commands.forEach(function (command) {
-        if (issue.comment.body.match(command.re)) {
+        if (data.comment.body.match(command.re)) {
           exec(command.exec, function (err, stdout, stderr) {
             console.log(stdout, stderr);
           });
