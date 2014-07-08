@@ -19,5 +19,9 @@
   "bugs": {
     "url": "https://github.com/btford/poppins-exec/issues"
   },
-  "dependencies": {}
+  "devDependencies": {
+    "jasmine-node": "git://github.com/btford/jasmine-node",
+    "poppins-mock": "0.0.1",
+    "rewire": "^2.0.1"
+  }
 }
