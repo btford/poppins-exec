@@ -1,0 +1,23 @@
+{
+  "name": "poppins-exec",
+  "version": "0.0.0",
+  "description": "mary-poppins plugin for running a local command",
+  "main": "plugin.js",
+  "scripts": {
+    "test": "mocha tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/btford/poppins-exec.git"
+  },
+  "keywords": [
+    "mary-poppins",
+    "poppins"
+  ],
+  "author": "Brian Ford",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/btford/poppins-exec/issues"
+  },
+  "dependencies": {}
+}
