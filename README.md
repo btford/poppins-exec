@@ -25,7 +25,7 @@ module.exports = function (poppins) {
   poppins.couldYouPlease('poppins-exec');
 
   // configure it
-  popins.config.plugins.exec = {
+  poppins.plugins.exec = {
 
     // regexs to match against and the corresponding script to run in response
     commands: [
