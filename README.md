@@ -39,5 +39,20 @@ module.exports = function (poppins) {
 ```
 
 
+## Security
+
+I think there may be a case where someone with write access to the repo could edit your
+comment body before `mary-poppins` reads and parses it so I suggest only running this
+on repos that you own.
+
+Be careful how you use this, or you'll subject yourself to
+[shell injection](http://en.wikipedia.org/wiki/Code_injection#Shell_injection).
+
+Your best bet is to only use very specific input as parameters like:
+
+* a number: `([0-9]+)`
+* a string of alphanumeric characters: `([a-zA-Z]+)`
+
+
 ## License
 MIT
