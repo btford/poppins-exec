@@ -1,5 +1,6 @@
 
 var exec = require('child_process').exec;
+var format = require('util').format;
 
 module.exports = function (poppins) {
   var plugins = poppins.plugins;
@@ -16,8 +17,12 @@ module.exports = function (poppins) {
   function execCommands (data) {
     if (plugins.exec.owners.indexOf(data.comment.user.login) > -1) {
       plugins.exec.commands.forEach(function (command) {
-        if (data.comment.body.match(command.re)) {
-          exec(command.exec, function (err, stdout, stderr) {
+        var match;
+        if (match = data.comment.body.match(command.re)) {
+          var commandString = typeof command.exec === 'function' ?
+              command.exec(match) : format(command.exec, match.slice(1));
+
+          exec(commandString, function (err, stdout, stderr) {
             console.log(stdout, stderr);
           });
         }
