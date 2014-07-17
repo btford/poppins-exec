@@ -39,8 +39,8 @@ describe('plugin', function () {
 
   it('should work with functions', function () {
     poppins.plugins.exec.commands = [
-      {re: /^\s*LGTM: (.*?)\s*$/, exec: function (full, firstMatch) {
-        return 'echo "' + firstMatch + '"';
+      {re: /^\s*LGTM: (.*?)\s*$/, exec: function (match) {
+        return 'echo "' + match[1] + '"';
       }}
     ];
 
@@ -59,6 +59,34 @@ describe('plugin', function () {
 
     runs(function () {
       expect(execSpy.mostRecentCall.args[0]).toBe('echo "merge it!"');
+    });
+  });
+
+  it('should pass data to functions', function () {
+
+    var data = {
+      comment: {
+        user: {
+          login: 'btford'
+        },
+        body: 'LGTM: merge it!'
+      }
+    };
+
+    var reaction = jasmine.createSpy('reaction');
+
+    poppins.plugins.exec.commands = [
+      {re: /^\s*LGTM: (.*?)\s*$/, exec: reaction}
+    ];
+
+    runs(function () {
+      poppins.emit('issueCommentCreated', data);
+    });
+
+    waitsFor(commentToBeCreated, 10);
+
+    runs(function () {
+      expect(reaction.mostRecentCall.args[1]).toEqual(data);
     });
   });
 

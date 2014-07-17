@@ -20,7 +20,7 @@ module.exports = function (poppins) {
         var match;
         if (match = data.comment.body.match(command.re)) {
           var commandString = typeof command.exec === 'function' ?
-              command.exec.apply(null, match) :
+              command.exec(match, data) :
               format.apply(null, [command.exec].concat(match.slice(1)));
 
           exec(commandString, function (err, stdout, stderr) {
